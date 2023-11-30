@@ -50,11 +50,13 @@ with open(fpath, 'r') as file:
 print("Key: ",crates.pop(1), crates.pop(2), crates.pop(3), crates.pop(4), crates.pop(5), crates.pop(6), crates.pop(7), crates.pop(8), crates.pop(9), sep="")
 '''
 #Part Two (Not Working dont know why works on the example they give but not on my input still troubleshooting)
+#Everything works when I test it but it isnt giving me the right key so
 fpath = r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt'
-import re #This import is a cheatcode for this stuff
+import re 
 class Crates:
-    #Standard multi-stack class
     def __init__(self): 
+        #Added Dummy 10th Stack
+        #The idea is to just move them to a dummy stack before going to the target stack to keep them in order
         self.stacks = [["W","M","L","F"], ["B", "Z", "B","M","F"], ["H","V","R","S","L","Q"],["F","S","V","Q","P","M","T","J"],["L","S","W"],
                        ["F","V","P","M","R","J","W"],["J","Q","C","P","N","R","F"],["V","H","P","S","Z","W","R","V"],["B","M","J","C","G","H","Z","W"],[]]
     def push(self, stack_num, item):
@@ -69,28 +71,29 @@ class Crates:
     def display(self):
         for i, stack in enumerate(self.stacks, start=1):
             print(f"Stack {i}: {stack}")
-
-
+            
 crates = Crates()
 
 with open(fpath, 'r') as file:
     for LineNum, line in enumerate(file, start=1):
-        #Skips first 11 lines but if you wanted to get fancier you could
+        #Skip first 11 lines
         if LineNum < 11:
             continue
+
         myStr = line.strip()
-        #Life Saver
+        #Sets variables to correct numbers
         pattern = r"move (\d+) from (\d+) to (\d+)"
         match = re.match(pattern, myStr)
         amount = int(match.group(1))
         fromCrate = int(match.group(2))
         toCrate = int(match.group(3))
-        moveback = amount
-        while amount >0:
+
+        #Original loop for p1 - replace toCrate with 10 
+        for _ in range(amount):
             crates.move(fromCrate, 10)
-            amount -= 1
-        while moveback >0:
+
+        #Move from 10 back to target crate in order
+        for _ in range(amount):
             crates.move(10, toCrate)
-            moveback -= 1
-print(crates.display())
+
 print("Key: ",crates.pop(1), crates.pop(2), crates.pop(3), crates.pop(4), crates.pop(5), crates.pop(6), crates.pop(7), crates.pop(8), crates.pop(9), sep="")
