@@ -43,17 +43,18 @@ with open(fpath, 'r') as file:
         fromCrate = int(match.group(2))
         toCrate = int(match.group(3))
 
-        while amount >0:
+        for _ in range(amount):
             crates.move(fromCrate, toCrate)
-            amount -= 1
 
 print("Key: ",crates.pop(1), crates.pop(2), crates.pop(3), crates.pop(4), crates.pop(5), crates.pop(6), crates.pop(7), crates.pop(8), crates.pop(9), sep="")
 '''
 #Part Two (Not Working dont know why works on the example they give but not on my input still troubleshooting)
 #Everything works when I test it but it isnt giving me the right key so
 fpath = r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt'
-import re 
+import re #This import is a cheatcode for this stuff
+
 class Crates:
+    #Standard multi-stack class
     def __init__(self): 
         #Added Dummy 10th Stack
         #The idea is to just move them to a dummy stack before going to the target stack to keep them in order
@@ -71,7 +72,8 @@ class Crates:
     def display(self):
         for i, stack in enumerate(self.stacks, start=1):
             print(f"Stack {i}: {stack}")
-            
+
+
 crates = Crates()
 
 with open(fpath, 'r') as file:
@@ -79,21 +81,20 @@ with open(fpath, 'r') as file:
         #Skip first 11 lines
         if LineNum < 11:
             continue
-
         myStr = line.strip()
-        #Sets variables to correct numbers
+        #Sets variables to correct number
         pattern = r"move (\d+) from (\d+) to (\d+)"
         match = re.match(pattern, myStr)
         amount = int(match.group(1))
         fromCrate = int(match.group(2))
         toCrate = int(match.group(3))
 
-        #Original loop for p1 - replace toCrate with 10 
+        #Original loop for p1 - replace toCrate with 10
         for _ in range(amount):
             crates.move(fromCrate, 10)
-
         #Move from 10 back to target crate in order
         for _ in range(amount):
             crates.move(10, toCrate)
 
 print("Key: ",crates.pop(1), crates.pop(2), crates.pop(3), crates.pop(4), crates.pop(5), crates.pop(6), crates.pop(7), crates.pop(8), crates.pop(9), sep="")
+
