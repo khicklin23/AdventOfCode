@@ -1,5 +1,4 @@
 '''
-#Edit - I just went and looked at part 2 and I think I'm gonna have to rework it all lol
 #Part One
 fpath = r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt'
 import re #This import is a cheatcode for this stuff
