@@ -1,6 +1,6 @@
-file_path = r'/Users/kadenhicklin/Desktop/AdventOfCode/input.txt'
+file_path_MacBook = r'/Users/kadenhicklin/Desktop/AdventOfCode/input.txt'
+file_path_PC = r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt'
 import re
-
 
 def partOne(file_input: str):
     sum = 0
@@ -27,7 +27,6 @@ def partOne(file_input: str):
     with open(file_path, 'r') as file:
         for LineNum, line in enumerate(file, start=1):"""
             
-partOne('/Users/kadenhicklin/Desktop/AdventOfCode/input.txt')
-#partTwo('/Users/kadenhicklin/Desktop/AdventOfCode/input.txt')
-
+partOne(file_path_PC)
+#partTwo(file_path_PC)
 
