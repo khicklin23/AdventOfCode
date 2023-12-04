@@ -1,5 +1,6 @@
 file_path = r'/Users/kadenhicklin/Desktop/AdventOfCode/input.txt'
 
+#Not working yet having issues with string overlap (i.e eightwothree)
 def partTwo(file_input: str):
     sum = 0
     charToNum = { "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, 
