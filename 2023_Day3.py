@@ -105,7 +105,7 @@ def partOne(file_input: str):
     print(sum)
 
 
-
+#Unfinished
 def partTwo(file_input: str):
     sum = 0
     matrix = []
