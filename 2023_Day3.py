@@ -1,6 +1,4 @@
 #2023 Day 3
-#I don't wanna talk about how long this took me
-
 def integrityCheck(matrix: list):
     for Row, currentLine in enumerate(matrix):
         for i in currentLine:
@@ -17,10 +15,10 @@ def partOne(file_input: str):
         for line in file:
             currentLine = list(line.strip())
             matrix.append(currentLine)
-        Column = 0
+        
     for Row, currentLine in enumerate(matrix):
+        Column = 0
         while Column < len(currentLine):
-
             #Check For Three Digit Num First (Important)
             if Column+2 < len(currentLine) and currentLine[Column].isdigit() and currentLine[Column+1].isdigit() and currentLine[Column+2].isdigit():
                 #Grab value of the 3 digits because were going to be changing that later
@@ -43,7 +41,7 @@ def partOne(file_input: str):
                     minW = 0
                 if Column == len(currentLine)-3:
                     maxW = 3
-
+                    
                 #Grabs the rows above and below the numbers (minH and maxH will change the rows grabbed if needed)
                 testRows = matrix[Row+minH:Row+maxH]
                 #Creates an array of all surrounding chars (minW and maxW will change the columns grabbed if needed)
@@ -101,11 +99,10 @@ def partOne(file_input: str):
             else:
                 #If not a num then continue
                 Column +=1
-        Column = 0
     print(sum)
 
 
-#Unfinished
+
 def partTwo(file_input: str):
     sum = 0
     matrix = []
@@ -118,14 +115,18 @@ def partTwo(file_input: str):
         while Column < len(currentLine):
             if matrix[Row][Column] == '*':
                 print()
+            """This is tricky, I'm gonna have to figure out how many digits the number is,
+            I'll have to look for digits touching the * but will also have to record up to
+            three digit numbers going away from the * so the miniMatrix will be 7 wide
+            
+            I think the easiest way to do this is to make three seperate functions, one"""
 
-   
 
 #PC
 print("Part One Answer:")
 partOne(r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt')
-print("Part Two Answer:")
-partTwo(r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt')
+#print("Part Two Answer:")
+#partTwo(r'C:\Users\hickl\OneDrive\Documents\AdventOfCode\input.txt')
 
 
 #MacBook
