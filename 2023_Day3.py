@@ -7,7 +7,6 @@ def integrityCheck(matrix: list):
                 return True
 
 
-
 def partOne(file_input: str):
     sum = 0
     matrix = []
@@ -35,13 +34,13 @@ def partOne(file_input: str):
                 #Alters the perameters for the matrix if you are close to an edge
                 if Row == 0:
                     minH = 0
-                if Row == 139:
+                elif Row == len(matrix)-1:
                     maxH = 0
                 if Column == 0:
                     minW = 0
-                if Column == len(currentLine)-3:
+                elif Column == len(currentLine)-3:
                     maxW = 3
-                    
+
                 #Grabs the rows above and below the numbers (minH and maxH will change the rows grabbed if needed)
                 testRows = matrix[Row+minH:Row+maxH]
                 #Creates an array of all surrounding chars (minW and maxW will change the columns grabbed if needed)
@@ -63,11 +62,11 @@ def partOne(file_input: str):
                 matrix[Row][Column+1] = 'T'
                 if Row == 0:
                     minH = 0
-                if Row == 139:
+                elif Row == len(matrix)-1:
                     maxH = 0
                 if Column == 0:
                     minW = 0
-                if Column == len(currentLine)-2:
+                elif Column == len(currentLine)-2:
                     maxW = 2 
 
                 testRows = matrix[Row+minH:Row+maxH]
@@ -83,11 +82,11 @@ def partOne(file_input: str):
                 matrix[Row][Column] = 'T'
                 if Row == 0:
                     minH = 0
-                if Row == 139:
+                elif Row == len(matrix)-1:
                     maxH = 0
                 if Column == 0:
                     minW = 0
-                if Column == len(currentLine)-1:
+                elif Column == len(currentLine)-1:
                     maxW = 0
 
                 testRows = matrix[Row+minH:Row+maxH]
